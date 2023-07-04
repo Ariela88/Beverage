@@ -2,6 +2,13 @@ class GUI{
 
     constructor(){
         this.cellar = new Cellar();
+        // this.storage = new Storage();
+
+
+        // const card = this.storage.loadData();
+        // if (card) {
+        //     this.cellar.fromDbObjects(card)
+        // }
     }
 
 
@@ -21,10 +28,7 @@ class GUI{
             } else if (firtsChoice === '2') {
                 this.insertBeverage()
 
-                if (type === 'vino') {
-                    this.insertWine()
-                }
-
+                
             } else if (firtsChoice === '3') {
 
                 this.deleteBeverage()
@@ -42,18 +46,40 @@ class GUI{
 
     insertBeverage() {
         const name = prompt('Inserisci il nome del prodotto');
-        const maker = prompt('Inserisci il produttore');
+        const region = prompt('Inserisci la provenienza ')
         const vol = prompt('Inserisci la gradazione alcolica');
-        const dop = prompt('Inserisci anno di imbottigliamento yyyy');
         const type = prompt('Inserisci il tipo di bevanda');
 
-        const beverage = new Beverage(name, maker, vol, dop, type);
+        const beverage = new Beverage(name, vol, region, type);
 
-        this.cellar.addBeverage(beverage);
+            if (type === 'vino') {
+                const maker = prompt('Inserisci il produttore');
+                const dop = prompt('Inserisci l\'anno di imbottigliamento');
+                const vine = prompt('Inserisci la varietà di uva utilizzata ')
+                
 
-        // this.storage.saveData(this.library.publications)
+            }else if(type === 'birra'){
+                const malt = prompt('Inserisci il tipo di malto utilizzato')
+                const style = prompt('Inserisci il sottostile della birra (Es: IPA, Weiss, etc...)')
+                
+                
+            } else {
+                alert('Digitare Vino o Birra')
+                
+                
+            }
 
-    }
+            
+        
+    
+            this.cellar.addBeverage(beverage);
+        // this.storage.saveData(this.cellar.beverage)
+        
+        }
+
+       
+ 
+    
 
 
     showBeverages() {
@@ -69,18 +95,6 @@ class GUI{
         const humanIndex = prompt('inserisci il numero del prodotto che vuoi eliminare')
         const index = humanIndex - 1
         this.cellar.deleteBeverage(index)
-        // this.storage.saveData(this.library.publications)   
+        // this.storage.saveData(this.cellar.beverage)   
     }
-
-//     insertWine() {
-//         const cantina = prompt('Inserisci il nome della cantina');
-//         const maker = prompt('Inserisci il produttore');
-//         const vol = prompt('Inserisci la gradazione alcolica');
-//         const dop = prompt('Inserisci anno di imbottigliamento yyyy');
-//         const type = prompt('Inserisci il tipo di bevanda');
-
-//         const beverage = new Beverage(name, maker, vol, dop, type);
-
-//         this.cellar.addBeverage(beverage);
-
-// }
+}

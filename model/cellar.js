@@ -2,10 +2,10 @@
 
 class Cellar {
 
-    constructor(beveragesArray = []){
+    constructor(beveragesArray = []) {
         this.beveragesArray = beveragesArray;
     }
-    
+
     addBeverage(bev) {
 
         this.beveragesArray.push(bev)
@@ -16,7 +16,7 @@ class Cellar {
 
         this.beveragesArray = this.beveragesArray.filter((_, i) => i !== index)
 
-    
+
     }
 
     getAllBeverageCard() {
@@ -24,13 +24,27 @@ class Cellar {
         let beverageCards = '';
 
         for (let i = 0; i < this.beveragesArray.length; i++) {
-            const pub = this.beveragesArray[i];
+            const bev = this.beveragesArray[i];
             const humanIndex = i + 1;
-            beverageCards += humanIndex + ') ' + pub.toString()
+            beverageCards += humanIndex + ') ' + bev.toString()
             beverageCards += '------------------------------------\n'
 
         } return beverageCards
     }
-    
+
+    // fromDbObjects(card) {
+
+    //     for (const genericObject of card) {
+
+    //         const beverage = new Beverage(genericObject.name, genericObject.maker,
+    //             genericObject.vol, genericObject.type, genericObject.vine, genericObject.region)
+    //         this.beverage.push(beverage)
+
+    //     }
+
+
+
+    // }
+
 
 }

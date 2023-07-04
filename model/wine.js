@@ -1,15 +1,21 @@
 class Wine extends Beverage {
-    constructor (name, maker, type, vol, dop, vine, region){
-        super(name, maker, type, vol, dop);
+    constructor (name, vol, region, type, maker, dop, vine){
+        super(name, vol, region, type);
+        
+        this.maker = maker;
         this.vine = vine;
-        this.region = region;
+        this.dop = dop;
     }
 
     toString(){
-        const wineCard = super.toString() +
-        'Vitigno '  + this.vine + '\n';
-        'Regione '  + this.region + '\n';
-        return wineCard;        
+        const card = super.toString() +
+        'Data di imbottigliamento: ' + this.dop + '\n' +
+        'Produttore: ' + this.maker + '\n' +
+        'Uva utilizzata  '  + this.vine + '\n';
+        
+        return card;        
     }
+
+ 
     
 }

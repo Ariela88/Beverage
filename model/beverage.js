@@ -1,20 +1,21 @@
-class Beverage{
-    constructor (name, maker, vol, dop, type){
-      this.name = name;
-      this.maker = maker;
-      this.vol = vol;
-      this.dop = dop;
-      this.type = type;
+class Beverage {
+    constructor(name, vol, region, type) {
+        this.name = name;
+       this.vol = vol;
+       this.region = region
+        this.type = type;
     }
 
 
     toString() {
-      
+
         const card = 'Etichetta:' + this.name + '\n' +
-            'Produttore: ' + this.maker + '\n' +
+            
             'Gradazione alcolica: ' + this.vol + '\n' +
-            'Data di imbottigliamento: ' + this.dop + '\n' +
+            
             'Tipologia di prodotto: ' + this.type + '\n';
+        
+            'Regione di provenienza' + this.region
         return card;
     }
 
