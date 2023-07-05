@@ -7,9 +7,9 @@ class Beer extends Beverage {
     }
 
     toString(){
-        const card = super.toString() +
-        'Malto '  + this.malt + '\n' +
-        'Sottostile: ' + this.style;
+        const card = super.toString() + 
+        '5) Malto: '  + this.malt + '\n' +
+        '6) Sottostile: ' + this.style + '\n';
         return card;        
     }
     

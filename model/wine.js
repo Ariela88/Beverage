@@ -9,9 +9,9 @@ class Wine extends Beverage {
 
     toString(){
         const card = super.toString() +
-        'Data di imbottigliamento: ' + this.dop + '\n' +
-        'Produttore: ' + this.maker + '\n' +
-        'Uva utilizzata  '  + this.vine + '\n';
+        '5) Produttore: ' + this.maker + '\n' +
+        '6) Data di imbottigliamento: ' + this.dop + '\n' +
+        '7) Uva utilizzata:  '  + this.vine + '\n';
         
         return card;        
     }

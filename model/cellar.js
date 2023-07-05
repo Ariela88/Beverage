@@ -19,7 +19,7 @@ class Cellar {
 
     }
 
-    getAllBeverageCard() {
+    getAllBeveragesCard() {
 
         let beverageCards = '';
 

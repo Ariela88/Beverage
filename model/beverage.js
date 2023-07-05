@@ -11,11 +11,11 @@ class Beverage {
 
         const card = 'Etichetta:' + this.name + '\n' +
             
-            'Gradazione alcolica: ' + this.vol + '\n' +
+            '2) Gradazione alcolica: ' + this.vol + '\n' +
             
-            'Tipologia di prodotto: ' + this.type + '\n';
+            '3) Tipologia di prodotto: ' + this.type + '\n' +
         
-            'Regione di provenienza' + this.region
+            '4) Regione di provenienza: ' + this.region+ '\n';
         return card;
     }
 
