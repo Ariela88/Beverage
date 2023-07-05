@@ -5,19 +5,27 @@ class GUI {
         // this.storage = new Storage();
 
 
-        // const card = this.storage.loadData();
-        // if (card) {
-        //     this.cellar.fromDbObjects(card)
-        // }
+        const data = Storage.loadData();
+        if (data !== null) {
+            this.cellar = Cellar.fromDbObjects(data)
+        } else {
+
+        }
+
+
+
     }
 
 
     start() {
 
         while (true) {
-            const firtsChoice = prompt('Hai 4 opzioni: \n 1) Guarda la lista dei prodotti \n' +
+            const firtsChoice = prompt(
+                'Ciao utente. La nostra cantina ha a disposizione ' + this.cellar.beverageCount + ' bevande.\n' +
+                'Hai 4 opzioni:  \n' +
+                '1) Guarda la lista dei prodotti \n' +
                 '2) Aggiungi una bevanda \n' +
-                '3) Rimuovi bevanda \n' +
+                '3) Rimuovi una bevanda dalla lista \n' +
                 '4) Esci \n' +
                 'Inserisci il numero dell\'operazione');
 
@@ -46,12 +54,10 @@ class GUI {
 
     insertBeverage() {
         const name = prompt('Inserisci il nome del prodotto');
-        const vol = prompt('Inserisci la gradazione alcolica');
-        const region = prompt('Inserisci la provenienza ')
-        const type = prompt('Inserisci il tipo di bevanda');
-
-
-
+        const vol = parseInt(prompt('Inserisci la gradazione alcolica'))
+        const region = prompt('Inserisci la regione di provenienza ')
+        const type = prompt('Inserisci la tipologia di bevanda (birra o vino)');
+       
         if (type === 'vino') {
 
             const maker = prompt('Inserisci il produttore');
@@ -59,6 +65,8 @@ class GUI {
             const vine = prompt('Inserisci la varietà di uva utilizzata ');
             const wine = new Wine(name, vol, region, type, maker, dop, vine);
             this.cellar.addBeverage(wine);
+            Storage.saveData(this.cellar.beveragesArray)
+            
             return;
 
 
@@ -68,32 +76,24 @@ class GUI {
             const style = prompt('Inserisci il sottostile della birra (Es: IPA, Weiss, etc...)')
             const beer = new Beer(name, vol, region, type, malt, style)
             this.cellar.addBeverage(beer);
+            Storage.saveData(this.cellar.beveragesArray)
             return;
 
         } else {
-            alert('Digitare Vino o Birra')
+            alert('Non puoi inserire altre tipologie di prodotto')
+            return
 
 
         }
 
-
-
-
-
-
-        this.cellar.addBeverage(beverage);
-        // this.storage.saveData(this.cellar.beverage)
-
+       
+    
+       
     }
-
-
-
-
-
 
     showBeverages() {
 
-        const allBeverages = this.cellar.getAllBeverageCard();
+        const allBeverages = this.cellar.getAllBeveragesCard();
 
         alert(allBeverages)
     }
@@ -104,6 +104,9 @@ class GUI {
         const humanIndex = prompt('inserisci il numero del prodotto che vuoi eliminare')
         const index = humanIndex - 1
         this.cellar.deleteBeverage(index)
-        // this.storage.saveData(this.cellar.beverage)   
+        Storage.saveData(this.cellar.beveragesArray)   
     }
+
+
+    
 }

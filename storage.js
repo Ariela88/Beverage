@@ -1,33 +1,22 @@
-// class Storage{
+class Storage {
 
-//     constructor(){
+     static saveData(data) {
 
-//     }
+        const dataString = JSON.stringify(data)
+        localStorage.setItem('beverage', dataString)
+    }
 
-// saveData(card){
+    static loadData() {
 
-//     const cardString = JSON.stringify(card)
-//     localStorage.setItem('beverage', cardString)
-// }
+        const dataString = localStorage.getItem('beverage')
 
+        if (dataString) {
+            const data = JSON.parse(dataString);
+            return data
 
-// loadData(){
+        }
 
-//     const cardString = localStorage.getItem('beverage')     
+        return null;
+    }
 
-//         if (cardString) {
-//             const card = JSON.parse(cardString);
-//             return card
-            
-//         }
-
-
-// return null;
-
-
-
-// }
-
-
-
-// }
+}
